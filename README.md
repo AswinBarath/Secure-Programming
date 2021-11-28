@@ -2,6 +2,15 @@
 
 Secure Programming
 
+---
+
+## Cyber Security Documentaries
+
+- [How Israel Rules The World Of Cyber Security | VICE on HBO](https://youtu.be/ca-C3voZwpM)
+- [WANNACRY: The World's Largest Ransomware Attack (Documentary)](https://youtu.be/PKHH_gvJ_hA)
+
+---
+
 ## Setting up Secure Programming Lab
 
 - [Download: VirtualBox](https://www.virtualbox.org/wiki/Downloads)
@@ -32,3 +41,4 @@ Secure Programming
 
 - [Fix: Not in a hypervisor partition (HVP=0) (VERR_NEM_NOT_AVAILABLE) or VT-x is disabled in the BIOS for all CPU modes (VERR_VMX_MSR_ALL_VMX_DISABLED)](https://techsupportwhale.com/not-in-a-hypervisor-partition/)
 - [Fix: Cannot install Ubuntu in VirtualBox due to "this kernel requires an x86-64 CPU, but only detects an i686 CPU, unable to boot" error](https://askubuntu.com/questions/308937/cannot-install-ubuntu-in-virtualbox-due-to-this-kernel-requires-an-x86-64-cpu)
+- [Fix: Installation Step Failed (installing the system) - Kali Linux](https://unix.stackexchange.com/questions/208772/installation-step-failed-installing-the-system-kali-linux)
