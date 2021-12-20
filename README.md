@@ -291,7 +291,8 @@ goto x
 **Buffer Overflow 1**
 
 - **Resources** :
-
+- [Buffer Overflow Explanation - Article](https://www.thegeekstuff.com/2013/06/buffer-overflow/)
+- [Buffer Overflow Attack Demo - Article](https://www.tallan.com/blog/2019/04/04/exploring-buffer-overflows-in-c-part-two-the-exploit/)
 
 ---
 
@@ -300,7 +301,9 @@ goto x
 **Buffer Overflow 2**
 
 - **Resources** :
-
+- [Stack based Buffer Overflow Attack Demo - Article](https://www.rapid7.com/blog/post/2019/02/19/stack-based-buffer-overflow-attacks-what-you-need-to-know/)
+- [Heap Overflow Attack Demo - Article](https://www.geeksforgeeks.org/heap-overflow-stack-overflow/?ref=lbp)
+- [Doing ret2libc with a Buffer Overflow because of restricted return pointer - bin 0x0F (YouTube Tutorial)](https://www.youtube.com/watch?v=m17mV24TgwY)
 
 ---
 
