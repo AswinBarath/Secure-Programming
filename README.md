@@ -32,6 +32,12 @@ Secure Programming
 <img src="https://i.stack.imgur.com/Gns38.png" width="200px" >
 </p>
 
+- [Download: OpenVAS Vulnerability Scanning Tool](https://www.kali.org/blog/openvas-vulnerability-scanning/)
+
+<p>
+<img src="https://stafwag.github.io/blog/images/openvas_on_kali/openvas-thumb.png" width="200px" >
+</p>
+
 
 ### Kali Linux Virtual Box Setup
 
@@ -45,17 +51,15 @@ Secure Programming
 
 ---
 
-## Lab 1
+## Lab 1 - **Format String Vulnerabilities and Attacks**
 
-**Lab 1: Format String Vulnerabilities and Attacks**
-
-- **Aim:** Perform the following using programming
+### **Aim:** Perform the following using programming
     1) Write a secure program by avoiding vulnerable programming factors
     like Eval and printf.
     2) Demonstrate Format string vulnerabilities with example
     3) Demonstrate Format String exploit with example
 
-- **Format String Program**
+### **Format String Program**
 
 <img src="./assets/exp1 program.png" alt="Format String Program" width="600px" >
 
@@ -77,7 +81,7 @@ parses the input using printf function to display output.
 <img src="./assets/Secure Programming Exp1 22.PNG" alt="Format String Program" width="600px" >
 
 
-- **Observation:**
+### **Observation:**
 
 - The Safe Code from the program
     - The line printf("%s", argv[1]); in the example is safe, if you compile the program and run it:
@@ -108,21 +112,26 @@ parses the input using printf function to display output.
     - The first line is printed from the non-vulnerable version of printf, and the second line from the vulnerable line. The values printed are the values on the stack of my computer at the moment of running this example.
     - Also reading and writing to any memory location is possible in some conditions, and even code execution
 
-- **Result:**
+### **Resources:**
+
+- [Online C Compiler - online editor](https://www.onlinegdb.com/online_c_compiler)
+
+### **Result:**
+
 - Format string vulnerabilities and exploits are successfully demonstrated by writing a C program with a secure code and a vulnerable code using printf function and string parameters
 
 ---
 
-## Lab 2
+## Lab 2 - **DHCP attack, MAC flooding attack and CAM table overflow attack**
 
-**DHCP attack, MAC flooding attack and CAM table overflow attack**
+### **Aim:**
 
-- **Aim:** Perform the following
+- Perform the following
     1) DHCP attack and prevention of DHCP attack
     2) MAC flooding attack 
     3) CAM table overflow attack
 
-- **Notes:**
+### **Notes:**
 
 - **MAC Flooding with MACOF & some major countermeasures**
     - Macof is a member of the Dsniff suit toolset and mainly used to flood the switch on a local network with MAC addresses. 
@@ -171,9 +180,7 @@ parses the input using printf function to display output.
     2) Implementation of 802.1X : Allows packet filtering rules issued by a centralised AAA server based on dynamic learning of clients.
     3) MAC Filtering  : Limits the no of MAC addresses to a certain extent.
 
----
-
-- **Resources** :
+### **Resources:**
 
 1) DHCP attack and prevention of DHCP attack 
 - [DHCP Snooping using Packet Tracer (YouTube Tutorial)](https://youtu.be/yz8DKkjuNYc)
@@ -199,23 +206,28 @@ parses the input using printf function to display output.
     - [MAC flooding lab - Article](https://yaser-rahmati.gitbook.io/cisco-ccnp-r-s-300-115-switch/lab-mac-address-flooding#3-3-how-to-do)
 - [CAM Table Overflow Attack Explained - Article](https://www.cbtnuggets.com/blog/technology/networking/cam-table-overflow-attack-explained)
 
+### **Result:**
+
+- DHCP attack, MAC flooding attack and CAM table overflow attack are successfully demonstrated.
 
 ---
 
-## Lab 3
+## Lab 3 - **Defeating malware**
 
-**Defeating malware**
+### **Aim:** 
 
-- **Note:** *I installed Windows 10 Virtual Machine on my VirtualBox to work safely with malware in a sandbox environment.*
-
-- **Aim:**  Defeating malware through 
+- Defeating malware through 
     1) Building trojans
     2) Scan for Rootkits, backdoors 
     3) Exploits Using Rootkit Hunter
 
-- **A) AIM:** To build a Trojan and know the harmness of the trojan malwares in a computer system.  
+### **Note:**
 
-- **Notes on Trojan:**
+- *I have installed Windows 10 Virtual Machine on my VirtualBox to work safely with malware in a sandbox environment.*
+
+### **A) AIM:** To build a Trojan and know the harmness of the trojan malwares in a computer system.  
+
+#### **Notes on Trojan:**
 
 - In computing, a Trojan horse or simply trojan is any malware which misleads users of its true intent.
 - The term is derived from the Ancient Greek story of the deceptive Trojan Horse that led to the fall of the city of Troy.
@@ -253,11 +265,10 @@ goto x
 - **RESULT:** 
 - Thus a trojan has been built and the harmness of the trojan viruses has been explored.
 
---
+### **B) AIM:**  To install a rootkit hunter and find the malwares in a computer by scanning for rootkits, backdoors then Exploits Using Rootkit Hunter
 
-- **B) AIM:**  To install a rootkit hunter and find the malwares in a computer by scanning for rootkits, backdoors then Exploits Using Rootkit Hunter
+#### **Notes on Rootkit Hunter:**
 
-- **Notes on Rootkit Hunter:**
 -  **ROOTKIT HUNTER:**
 -	rkhunter (Rootkit Hunter) is a Unix-based tool that scans for rootkits, backdoors and possible local exploits. 
 -	It does this by comparing SHA-1 hashes of important files with known good ones in online databases, searching for default directories (of rootkits), wrong permissions, hidden files, suspicious strings in kernel modules, and special tests for Linux and FreeBSD.
@@ -279,110 +290,273 @@ goto x
 - **RESULT:** 
 - In this experiment a rootkit hunter software tool has been installed and the rootkits have been detected.
 
---
+#### **Note:**
 
-- **Resources** :
+- Once completing all of the 3 steps, the Rootkit Hunter found no malwares in my Windows 10 Virtual Machine, and hence after search completion, it restarted the OS.
+
+### **Resources:**
+
 - [How to Install Windows 10 on VirtualBox (YouTube Tutorial)](https://youtu.be/JT8EXoobjSc)
 
+### **Result:**
+
+- The following were successfully performed:
+    - Building Trojans, 
+    - Scanning Rootkits, backdoors and exploits Using Rootkit Hunter.
+
 ---
 
-## Lab 4
+## Lab 4 - **Buffer Overflow 1**
 
-**Buffer Overflow 1**
+### **Aim:**
 
-- **Resources** :
+- Demonstrate the following
+    1) Buffer overflow attacks
+    2) How to exploit Buffer overflow vulnerability lab
+    3) Exploitation with a Buffer overflow and shellcode
+
+### **What is Buffer Overflow?**
+
+- A buffer, in terms of a program in execution, can be thought of as a region of computer’s main memory that has certain boundaries in context with the program variable that references this memory.
+- A buffer is said to be overflown when the data (meant to be written into memory buffer) gets written past the left or the right boundary of the buffer. 
+- This way the data gets written to a portion of memory which does not belong to the program variable that references the buffer.
+- A buffer overflow (or buffer overrun) also occurs when the volume of data exceeds the storage capacity of the memory buffer.
+- If the transaction overwrites executable code, it can cause the program to behave unpredictably and generate incorrect results, memory access errors, or crashes.
+
+### **Resources:**
+
 - [Buffer Overflow Explanation - Article](https://www.thegeekstuff.com/2013/06/buffer-overflow/)
 - [Buffer Overflow Attack Demo - Article](https://www.tallan.com/blog/2019/04/04/exploring-buffer-overflows-in-c-part-two-the-exploit/)
+- [Running a Buffer Overflow Attack - Computerphile (YouTube Tutorial)](https://youtu.be/1S0aBV-Waeo)
+
+### **Result:**
+
+- The following buffer overflow vulnerabilities were demonstrated successfully
+    1) Buffer overflow attacks
+    2) How to exploit Buffer overflow vulnerability lab
+    3) Exploitation with a Buffer overflow and shellcode
 
 ---
 
-## Lab 5
+## Lab 5 - **Buffer Overflow 2**
 
-**Buffer Overflow 2**
+### **Aim:**
+- Demonstrate the following
+    1) Take over control of a program with a buffer overflow
+    2) Perform ret2libc with a Buffer Overflow because of restricted return pointer
+    3) Buffer overflow for the Stack () level
 
-- **Resources** :
+### **Resources:**
+
 - [Stack based Buffer Overflow Attack Demo - Article](https://www.rapid7.com/blog/post/2019/02/19/stack-based-buffer-overflow-attacks-what-you-need-to-know/)
 - [Heap Overflow Attack Demo - Article](https://www.geeksforgeeks.org/heap-overflow-stack-overflow/?ref=lbp)
 - [Doing ret2libc with a Buffer Overflow because of restricted return pointer - bin 0x0F (YouTube Tutorial)](https://www.youtube.com/watch?v=m17mV24TgwY)
 
+### **Result:**
+
+- The following buffer overflow vulnerabilities were demonstrated successfully
+    1) Take over control of a program with a buffer overflow
+    2) Perform ret2libc with a Buffer Overflow because of restricted return pointer
+    3) Buffer overflow for the Stack () level
+
+
 ---
 
-## Lab 6
+## Lab 6 - **OWASP**
 
-**OWASP**
+### **Aim:**
 
-- **Resources** :
+- Demonstrate the following exploitation of OWASP vulnerabilities
+    1) OWASP insecure deserialization
+    2) Hands on sensitive data exposure
+    3) Broken authentication and session management
+
+### **Notes on OWASP Juice Shop:**
+- OWASP Juice Shop is probably the most modern and sophisticated 
+insecure web application! 
+- It can be used in security trainings, awareness demos, CTFs and as 
+a guinea pig for security tools! 
+- Juice Shop encompasses vulnerabilities from the entire OWASP 
+Top Ten along with many other security flaws found in real-world 
+applications!
+
+### **Resources:**
+
 - [OWASP Juice Shop (YouTube Tutorial)](https://www.youtube.com/watch?v=JI1JX0lpwNw)
 - [OWASP Juice Shop (GitHub Repo)](https://github.com/juice-shop/juice-shop)
 
+### **Result:**
+
+- The following OWASP vulnerabilities were exploited successfully
+    1) OWASP insecure deserialization
+    2) Hands on sensitive data exposure
+    3) Broken authentication and session management
 
 ---
 
-## Lab 7
+## Lab 7 - **Web Application Assessment**
 
-**Web Application Assessment using i) OpenVAS ii) Vega iii) skipfish iv) Wapiti**
+### **Aim:** 
 
-- **Resources** :
+- Demonstrate web application assessment using following tools
+    1)	OpenVAS 
+    2)	Vega 
+    3)	Skipfish 
+    4)	Wapiti
+
+### **What is on OpenVAS?**
+
+- OpenVAS – Open Vulnerability Assessment Scanner
+    - OpenVAS is a full-featured vulnerability scanner. 
+    - Its capabilities include unauthenticated and authenticated testing, various high-level and low-level internet and industrial protocols, performance tuning for large-scale scans and a powerful internal programming language to implement any type of vulnerability test.
+    - The scanner obtains the tests for detecting vulnerabilities from a feed that has a long history and daily updates.
+- OpenVAS Installation:
+    - Update the Kali Linux VM using the following commands
+        - `sudo apt-get update`
+        - `sudo apt-get upgrade`
+        - `sudo apt-get dist-upgrade`
+    - Download and Install OpenVAS using the following command
+        - `sudo apt-get install openvas`
+    - From Vulnerability Analysis Tools use **Initial OpenVAS** to initialize and configure OpenVAS
+    - From Vulnerability Analysis Tools use **start OpenVAS server** to open on a browser
+
+
+### **Resources** :
+
 - [i) OpenVAS](https://www.youtube.com/watch?v=koMo_fSQGlk)
+    - [OpenVAS 8.0 Vulnerability Scanning - Article](https://www.kali.org/blog/openvas-vulnerability-scanning/)
+    - [OpenVAS - Official Website](https://openvas.org/)
 - [ii) Vega](https://www.youtube.com/watch?v=aPtJ3spzTww)
 - [iii) skipfish](https://www.youtube.com/watch?v=YKILueSxLR0)
 - [iv) Wapiti](https://www.youtube.com/watch?v=aPtJ3spzTww)
 
+### **Result** :
+
+- The following tools were successfully used to demonstrate application assessment
+    1)	OpenVAS 
+    2)	Vega 
+    3)	Skipfish 
+    4)	Wapiti
 
 
 ---
 
-## Lab 8
 
-**Cache poisoning**
+## Lab 8 - **Cache poisoning**
 
-- **Resources** :
+### **Aim:**
+
+- Demonstrate the following
+    1) DNS cache poisoning
+    2) DOS using ARP cache poisoning
+    3) MIM attack using ARP cache poisoning
+
+### **What is Cache Poisoning?**
+
+### **Resources** :
+
 - [What is DNS cache poisoning? | DNS spoofing](https://www.cloudflare.com/en-in/learning/dns/dns-cache-poisoning/)
 - [DNS cache poisoning (Youtube Tutorial 1)](https://www.youtube.com/watch?v=1d1tUefYn4U)
 - [DNS cache poisoning (Youtube Tutorial 2)](https://www.youtube.com/watch?v=c76GbfM_QsI)
 - [DOS using ARP cache poisoning](https://www.youtube.com/watch?v=8SIP36Fym7U)
 
+### **Result:**
+
+- The following demonstrations were successfully performed:
+    1) DNS cache poisoning
+    2) DOS using ARP cache poisoning
+    3) MIM attack using ARP cache poisoning
+
 
 ---
 
-## Lab 9
+## Lab 9 -**SQL Injection**
 
-**SQL Injection**
+### **Aim:** 
 
-- **Resources** :
-- [Refer "Experiment 9 lab material" document](#)
+- Demonstrate the following SQL Injection operations
+    1) Send SQL map post request injection by using burp suite proxy
+    2) Bypass login page using SQL injection
+    3) Detect and exploit SQL injection flaws using SQL map
+
+
+### **What is SQL Injection?**
+
+### **Resources:**
+
+### **Result:**
+
+- The following SQL Injection operations were successfully demonstrated
+    1) Send SQL map post request injection by using burp suite proxy
+    2) Bypass login page using SQL injection
+    3) Detect and exploit SQL injection flaws using SQL map
 
 ---
 
-## Lab 10
+## Lab 10 - **XSS Attack**
 
-**XSS Attack**
+### **Aim:**
 
-- **Resources** :
+- Demonstrate the following
+    1) Running a XSS attack and how to defend it
+    2) Cross site scripting - filter bypass techniques
+    3) How to Exploit Stored, Reflected and DOM XSS
+
+### **What is an XSS Attack?**
+
+### **Resources** :
+
 - [XSS Attack (Youtube Tutorial)](https://www.youtube.com/watch?v=oEFPFc36weY)
 
+### **Result:**
+
+- A XSS attack was successfully demonstrated and learnt defending it. 
+- Cross site scripting was implemented with filter bypass techniques. 
+- Stored, reflected and DOM was exploited successfully.
 
 ---
 
-## Lab 11
+## Lab 11 - **Injection attacks using webgoat**
 
-**Injection attacks using webgoat**
+### **Aim:**
 
-- **Resources** :
+- Demonstrate the following
+    1) XPath injection using webgoat
+    2) Command injection using webgoat
+    3) SQL injection and database backdoor using webgoat
+
+### **What is Webgoat?**
+
+### **Resources:**
 - [XPath injection using web goat (Youtube Tutorial)](https://www.youtube.com/watch?v=C_-ea63FUto)
 - [OWASP BWA WebGoat Challenge: Injection Flaws](https://spencerdodd.github.io/2017/01/30/webgoat_part_10_continued_continued/)
 
+### **Result:**
+
+- The following injection attacks were successfully demonstrated using webgoat
+    1) XPath injection
+    2) Command injection
+    3) SQL injection and database backdoor
 
 ---
 
-## Lab 12
+## Lab 12 - **Advanced Client-Side Exploitation using BeEF**
 
-**Advanced Client-Side Exploitation using BeEF**
+### **Aim:**
 
-- **Resources** :
+- Demonstrate Advanced Client-Side Exploitation using BeEF
+
+### **What is BeEF?**
+
+- BeEF is short for The Browser Exploitation Framework.
+- It is a penetration testing tool that focuses on the web browser.
+- BeEF framework is used whenever any application is vulnerable to cross-site scripting (Clint-side exploit).
+
+### **Resources** :
 - [Client-Side Exploitation using BeEF (Youtube Tutorial)](https://www.youtube.com/watch?v=8GNzd7EL978)
 - [BeEF official website](https://beefproject.com/)
 
-
+### **Result:**
+- Advanced Client-Side Exploitation using BeEF is successfully demonstrated.
 
 ---
