@@ -312,7 +312,7 @@ parses the input using printf function to display output.
 
 ---
 
-## Lab 4 - **Buffer Overflow 1**
+## ✅ Lab 4 - **Buffer Overflow 1**
 
 ### **Aim:**
 
@@ -328,6 +328,115 @@ parses the input using printf function to display output.
 - This way the data gets written to a portion of memory which does not belong to the program variable that references the buffer.
 - A buffer overflow (or buffer overrun) also occurs when the volume of data exceeds the storage capacity of the memory buffer.
 - If the transaction overwrites executable code, it can cause the program to behave unpredictably and generate incorrect results, memory access errors, or crashes.
+
+### **Procedure**
+
+#### **Aim A: Buffer Overflow demonstration and simulation**
+- Buffer overflow gets worse when an attacker comes to know about a buffer over flow in your program and he/she exploits it.
+- Consider the following exploit code:
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Exp 4 Exploit Code 1.png" width="400px" />
+
+- The program above simulates scenario where a program expects a 
+password from user and if the password is correct then it grants 
+root privileges to the user.
+- Let’s the run the program with correct password i.e. ‘thegeekstuff’:
+- Output:
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Exp 4 Exploit Output 1.png" width="800px" />
+
+-	This works as expected. 
+-	The passwords match and root privileges are given.
+-	But there is a possibility of buffer overflow in this program. 
+-	The gets() function does not check the array bounds and can even write string of length greater than the size of the buffer to which the string is written. 
+-	Now, we can understand what an attacker can do with this kind of a loophole in our program.
+
+- Here is three different output examples from online compilers:
+- Output i:
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Exp 4 Exploit Output 2.png" width="800px" />
+
+- Output ii:
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Exp 4 Exploit Output 3.png" width="800px" />
+
+-	The above two compilers are clearly well built, as they detect our buffer overflow exploit and terminates the program with “stack smashing detected” warning message.
+
+- Output iii:
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Exp 4 Exploit Output 4.png" width="800px" />
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Exp 4 Exploit Output 5.png" width="800px" />
+
+-	In the above example, even after entering a wrong password, the program worked as if you gave the correct password.
+-	There is a logic behind the output above. What attacker did was, he/she supplied an input of length greater than what buffer can hold and at a particular length of input the buffer overflow so took place that it overwrote the memory of integer ‘pass’. 
+-	So despite of a wrong password, the value of ‘pass’ became non zero and hence root privileges were granted to an attacker.
+-	There are several other advanced techniques (like code injection and execution) through which buffer over flow attacks can be done but it is always important to first know about the basics of buffer, its overflow and why it is harmful.
+
+#### **Aim B: Exploitation with a Buffer overflow and shellcode**
+
+-	Functions like strcat() and strcpy() do not check the length of the input strings relative to the size of the destination buffer – exactly the condition we are looking to exploit. 
+-	Safe usage of these functions relies entirely upon the programmer’s implementation.
+-	Consider the following exploit code:
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Exp 4 Exploit Code 2.png" width="400px" />
+
+-	The program takes one argument and passes it into vulnerableFunc() which creates a buffer and copies the argument into it. Then the program prints “Exiting…” and quits.
+-	The call to strcpy() on line 7 is what we are going to be exploiting – notice how we didn’t check the length of what was being copied into buffer.
+-	Most operating systems and compilers have certain features enabled by default to prevent buffer overflows.
+- Let’s execute the exploit code terminal directly to see what happens:
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Lab 4 - Buffer Overflow 1.png" width="800px" />
+
+-	The first execution went as expected, we see “Exiting…” printed to the console. 
+-	But the second execution crashed and printed “Segmentation fault”. Normally not a great sign when coding, but this is good news for us! 
+-	A segmentation fault is an error thrown when a program tries to access restricted memory. 
+-	The only thing that changed between the first and second call to overflow was our input – clearly something happened the second time around that caused our program to try and access off-limits memory.
+-	In order to figure out what is going on, we’re going to have to take a brief look at debugging C code with the GNU Debugger (GDB).
+- Let’s list the “vulnerableFunc” from overflow.c program.
+Then, we’re going to stop at line 7 and line 8 by setting some breakpoints, immediately before and immediately after we copy our input into the buffer. 
+- Later, let’s run the code with “AAAA” as input and inspect the buffer for memory addresses.
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Lab 4 - Buffer Overflow 2.png" width="800px" />
+
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Lab 4 - Buffer Overflow 3.png" width="800px" />
+
+-	The second command x /128bx buffer displays 128 bytes as hexadecimal characters, starting where buffer is stored in memory.
+-	The first four values of our buffer are now 0x41. The 0x41 is how the ASCII character A is represented as a hexadecimal value.
+-	We know from looking at the source code that buffer is an array of 80 characters. 
+-	Let’s run the program again, this time with 79 A’s, and see what our memory looks like after strcpy() returns.
+-	From the below output, It looks like buffer starts at address 0x7fffffffdf20 and ends at address 0x7fffffffdf70, which is 80 bytes away.
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Lab 4 - Buffer Overflow 4.png" width="800px" />
+
+-	The goal is to overwrite the return address so we can control what the program does next. 
+-	GDB makes this very easy with the info frame command.
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Lab 4 - Buffer Overflow 5.png" width="800px" />
+
+-	From the above output we can see that, the stack frame holding some data about where our function was called from, the arguments, and the return address, are present at the address 0x7fffffffdf70. 
+-	0xef78 – 0xef20 = 0x58 (Hexadecimal) => 8810 (Decimal)
+-	Finding the difference between the addresses and converting it to decimal tells us that the return address is stored 88 bytes after the start of buffer.
+-	Hence, if we provided 96 characters we would fill up the buffer, overflow so we are close to the return address, and then overwrite the entire return address.
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Lab 4 - Buffer Overflow 6.png" width="800px" />
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Lab 4 - Buffer Overflow 7.png" width="800px" />
+
+<img src="./Secure Programming Lab/Lab 4 - Buffer Overflow/Lab 4 - Buffer Overflow 8.png" width="800px" />
+
+-	info frame command shows us that the return address is stored at 0x7fffffffdf70.
+-	But when we look at the memory, we can see that we successfully overwrote the return address. When our function ends, the program will look to 0x7fffffffdf70 to find which instruction to execute next. But instead of the original location, it will try and go to 0x4141414141414141. 
+-	The odds of there being anything useful in that location are pretty small. A Hacker can change the return address to be equal to the address of the buffer so he/she can provide their own malicious code to run.
+
+### **Buffer Overflow countermeasures:**
+
+- To avoid buffer overflow attacks, the general advice that is given to programmers is to follow good programming practices.
+-	Make sure that the memory auditing is done properly in the program using utilities like valgrind memcheck
+-	Use fgets() instead of gets().
+-	Use strncmp() instead of strcmp(), strncpy() instead of strcpy() and so on.
+The moral of the story: Never trust user input!
 
 ### **Resources:**
 
