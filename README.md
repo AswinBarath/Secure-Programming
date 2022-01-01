@@ -209,7 +209,7 @@ parses the input using printf function to display output.
 
 ---
 
-## Lab 3 - **Defeating malware**
+## ✅ Lab 3 - **Defeating malware**
 
 ### **Aim:** 
 
@@ -218,76 +218,85 @@ parses the input using printf function to display output.
     2) Scan for Rootkits, backdoors 
     3) Exploits Using Rootkit Hunter
 
-### **Note:**
+### **What is Trojan Horse?**
 
-- *I have installed Windows 10 Virtual Machine on my VirtualBox to work safely with malware in a sandbox environment.*
+-	In computing, a Trojan horse or simply trojan is any malware which misleads users of its true intent.
+-	The term is derived from the Ancient Greek story of the deceptive Trojan Horse that led to the fall of the city of Troy.
+-	In computing, a Trojan horse, or trojan, is any malware which misleads users of its true intent.
+-	Trojans may allow an attacker to access users' personal information such as banking information, passwords, or personal identity
+-	Trojans are generally spread by some form of social engineering, for example where a user is duped into executing an email attachment disguised to appear not suspicious, (e.g., a routine form to be filled in), or by clicking on some fake advertisement on social media or anywhere else. Although their payload can be anything, many modern forms act as a backdoor, contacting a controller which can then have unauthorized access to the affected computer.
+-	Example: Ransomware attacks are often carried out using a trojan.
+-	Unlike computer viruses, worms, and rogue security software, trojans generally do not attempt to inject themselves into other files or otherwise propagate themselves.
 
-### **A) AIM:** To build a Trojan and know the harmness of the trojan malwares in a computer system.  
+### **Procedure:**
 
-#### **Notes on Trojan:**
+#### *Note: I have installed Windows 10 Virtual Machine on my VirtualBox to work safely with malware in a sandbox environment.*
 
-- In computing, a Trojan horse or simply trojan is any malware which misleads users of its true intent.
-- The term is derived from the Ancient Greek story of the deceptive Trojan Horse that led to the fall of the city of Troy.
-- In computing, a Trojan horse, or trojan, is any malware which misleads users of its true intent.  
--	Trojans may allow an attacker to access users' personal information such as banking information, passwords, or personal identity 
-- Trojans are generally spread by some form of social engineering, for example where a user is duped into executing an email attachment disguised to appear not suspicious, (e.g., a routine form to be filled in), or by clicking on some fake advertisement on social media or anywhere else. Although their payload can be anything, many modern forms act as a backdoor, contacting a controller which can then have unauthorized access to the affected computer.
-- Example: Ransomware attacks are often carried out using a trojan.
-- Unlike computer viruses, worms, and rogue security software, trojans generally do not attempt to inject themselves into other files or otherwise propagate themselves.
+<img src="./Secure Programming Lab/Lab 3 - Defeating Malware/Secure Programming Exp 3 Trojan Horse 0.png" width="800px" />
 
-- **PROCEDURE:**
-1. Create a simple trojan by using Windows Batch File (.bat) 
-2. Type these below code in notepad and save it as Trojan.bat 
-3. Double click on Trojan.bat file. 
+#### **A) AIM: Build a Trojan** 
+
+- Code: (File name: Trojan.bat)
+
+<img src="./Secure Programming Lab/Lab 3 - Defeating Malware/Exp 3 Trojan Code.png" width="200px" />
+
+1. Create a simple trojan by using Windows Batch File (.bat)
+2. Type these below code in notepad and save it as Trojan.bat
+
+<img src="./Secure Programming Lab/Lab 3 - Defeating Malware/Secure Programming Exp 3 Trojan Horse 1.png" width="800px" />
+
+3. Double click on Trojan.bat file.
+
+<img src="./Secure Programming Lab/Lab 3 - Defeating Malware/Secure Programming Exp 3 Trojan Horse 2.png" width="800px" />
+
 4. When the trojan code executes, it will open MS-Paint, Notepad, Command Prompt, Explorer, etc., infinitely.
-5. Restart the computer to stop the execution of this trojan.  
 
-- **CODE:** 
+<img src="./Secure Programming Lab/Lab 3 - Defeating Malware/Secure Programming Exp 3 Trojan Horse 3.png" width="800px" />
 
-```
-Trojan.bat @echo off 
-:x
-start mspaint 
-start notepad 
-start cmd 
-start explorer 
-start control 
-start calc 
-goto x   
-```
 
-- **OUTPUT:** 
+<img src="./Secure Programming Lab/Lab 3 - Defeating Malware/Secure Programming Exp 3 Trojan Horse 4.png" width="800px" />
 
-*(MS-Paint, Notepad, Command Prompt, Explorer will open infinitely)*
 
-- **RESULT:** 
-- Thus a trojan has been built and the harmness of the trojan viruses has been explored.
+<img src="./Secure Programming Lab/Lab 3 - Defeating Malware/Secure Programming Exp 3 Trojan Horse 5.png" width="800px" />
 
-### **B) AIM:**  To install a rootkit hunter and find the malwares in a computer by scanning for rootkits, backdoors then Exploits Using Rootkit Hunter
+5. Restart the computer to stop the execution of this trojan.
 
-#### **Notes on Rootkit Hunter:**
+<img src="./Secure Programming Lab/Lab 3 - Defeating Malware/Secure Programming Exp 3 Trojan Horse 6.png" width="800px" />
 
--  **ROOTKIT HUNTER:**
+
+#### **B) AIM: Install a rootkit hunter and find the malwares**
+
+##### **ROOTKIT HUNTER:**
 -	rkhunter (Rootkit Hunter) is a Unix-based tool that scans for rootkits, backdoors and possible local exploits. 
 -	It does this by comparing SHA-1 hashes of important files with known good ones in online databases, searching for default directories (of rootkits), wrong permissions, hidden files, suspicious strings in kernel modules, and special tests for Linux and FreeBSD.
 -	rkhunter is notable due to its inclusion in popular operating systems (Fedora, Debian, etc.) 
 -	The tool has been written in Bourne shell, to allow for portability. It can run on almost all UNIX-derived systems.  
 
-- **GMER ROOTKIT TOOL:**
+##### **GMER ROOTKIT TOOL:**
 -	GMER is a software tool written by a Polish researcher Przemysław Gmerek, for detecting and removing rootkits.
 -	It runs on Microsoft Windows and has support for Windows NT, 2000, XP, Vista, 7, 8 and 10. With version 2.0.18327 full support for Windows x64 is added.
 
-- **PROCEDURE:**
-- *STEP 1:* Visit GMER's website (see Resources) and download the GMER executable. Click the "Download EXE" button to download the program with a random file name, as some rootkits will close “gmer.exe” before you can open it.
-- <img src="./assets/Secure Programming Exp3 step 1.png" alt="Step 1" width="600px" />
-- *STEP 2:* Click the "Scan" button in the lower-right corner of the dialog box. Allow the program to scan your entire hard drive.
-- <img src="./assets/Secure Programming Exp3 step 2.png" alt="Step 2" width="600px" />
-- *STEP 3:* If the red item is a service, it may be protected. Right-click the service and select "Disable." Reboot your computer and run the scan again, this time selecting "Delete" when that service is detected. When your computer is free of Rootkits, close the program and restart your  PC.  
-- <img src="./assets/Secure Programming Exp3 step 3.png" alt="Step 3" width="600px" />
+##### **PROCEDURE:**
 
-- **RESULT:** 
-- In this experiment a rootkit hunter software tool has been installed and the rootkits have been detected.
+- *STEP 1:*
+    - Visit GMER's website (see Resources) and download the GMER executable.
+    - Click the "Download EXE" button to download the program with a random file name, as some rootkits will close “gmer.exe” before you can open it.
 
-#### **Note:**
+<img src="./Secure Programming Lab/Lab 3 - Defeating Malware/Secure Programming Exp 3 Rootkit hunter 1.png" alt="Step 1" width="800px" />
+
+- *STEP 2:*
+    - Click the "Scan" button in the lower-right corner of the dialog box. Allow the program to scan your entire hard drive.
+
+<img src="./Secure Programming Lab/Lab 3 - Defeating Malware/Secure Programming Exp 3 Rootkit hunter 2.png" alt="Step 2" width="800px" />
+
+- *STEP 3:*
+    - If the red item is a service, it may be protected. Right-click the service and select "Disable."
+    - Reboot your computer and run the scan again, this time selecting "Delete" when that service is detected.
+    - When your computer is free of Rootkits, close the program and restart your  PC.  
+
+<img src="./Secure Programming Lab/Lab 3 - Defeating Malware/Secure Programming Exp 3 Rootkit hunter 3.png" alt="Step 3" width="800px" />
+
+##### **Note:**
 
 - Once completing all of the 3 steps, the Rootkit Hunter found no malwares in my Windows 10 Virtual Machine, and hence after search completion, it restarted the OS.
 
