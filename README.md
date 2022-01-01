@@ -1,13 +1,6 @@
 # Secure Programming
 
-Secure Programming
-
----
-
-## Cyber Security Documentaries
-
-- [How Israel Rules The World Of Cyber Security | VICE on HBO](https://youtu.be/ca-C3voZwpM)
-- [WANNACRY: The World's Largest Ransomware Attack (Documentary)](https://youtu.be/PKHH_gvJ_hA)
+- **Secure Programming** is one of the Computer Science Core Electives I had chosen from my [Software Engineering Degree](https://github.com/AswinBarath/Software-Engineering-Degree)
 
 ---
 
@@ -51,9 +44,11 @@ Secure Programming
 
 ---
 
-## Lab 1 - **Format String Vulnerabilities and Attacks**
+## ✅ Lab 1 - **Format String Vulnerabilities and Attacks**
 
-### **Aim:** Perform the following using programming
+### **Aim:**
+
+- Perform the following using programming
     1) Write a secure program by avoiding vulnerable programming factors
     like Eval and printf.
     2) Demonstrate Format string vulnerabilities with example
@@ -131,7 +126,7 @@ parses the input using printf function to display output.
     2) MAC flooding attack 
     3) CAM table overflow attack
 
-### **Notes:**
+<!-- ### **Notes:**
 
 - **MAC Flooding with MACOF & some major countermeasures**
     - Macof is a member of the Dsniff suit toolset and mainly used to flood the switch on a local network with MAC addresses. 
@@ -204,7 +199,9 @@ parses the input using printf function to display output.
 - MAC flooding 
     - [Kali Linux CAM Table Overflow Demo - Article](https://networkwizkid.com/2017/02/01/kali-linux-cam-table-overflow-attack-demonstration/)
     - [MAC flooding lab - Article](https://yaser-rahmati.gitbook.io/cisco-ccnp-r-s-300-115-switch/lab-mac-address-flooding#3-3-how-to-do)
-- [CAM Table Overflow Attack Explained - Article](https://www.cbtnuggets.com/blog/technology/networking/cam-table-overflow-attack-explained)
+- [CAM Table Overflow Attack Explained - Article](https://www.cbtnuggets.com/blog/technology/networking/cam-table-overflow-attack-explained) -->
+
+### **Resources:**
 
 ### **Result:**
 
@@ -348,9 +345,12 @@ goto x
 
 ### **Resources:**
 
+- [Take over control of a program with a buffer overflow - Computerphile (YouTube Tutorial)](https://www.youtube.com/watch?v=1S0aBV-Waeo)
+- [Binary Exploitation / Memory Corruption by LiveOverflow (YouTube Playlist)](https://youtube.com/playlist?list=PLhixgUqwRTjxglIswKp9mpkfPNfHkzyeN)
+- [Buffer Overflow challenge - Source](https://exploit.education/protostar/stack-zero/)
+- [Doing ret2libc with a Buffer Overflow because of restricted return pointer - bin 0x0F (YouTube Tutorial)](https://www.youtube.com/watch?v=m17mV24TgwY)
 - [Stack based Buffer Overflow Attack Demo - Article](https://www.rapid7.com/blog/post/2019/02/19/stack-based-buffer-overflow-attacks-what-you-need-to-know/)
 - [Heap Overflow Attack Demo - Article](https://www.geeksforgeeks.org/heap-overflow-stack-overflow/?ref=lbp)
-- [Doing ret2libc with a Buffer Overflow because of restricted return pointer - bin 0x0F (YouTube Tutorial)](https://www.youtube.com/watch?v=m17mV24TgwY)
 
 ### **Result:**
 
@@ -370,15 +370,6 @@ goto x
     1) OWASP insecure deserialization
     2) Hands on sensitive data exposure
     3) Broken authentication and session management
-
-### **Notes on OWASP Juice Shop:**
-- OWASP Juice Shop is probably the most modern and sophisticated 
-insecure web application! 
-- It can be used in security trainings, awareness demos, CTFs and as 
-a guinea pig for security tools! 
-- Juice Shop encompasses vulnerabilities from the entire OWASP 
-Top Ten along with many other security flaws found in real-world 
-applications!
 
 ### **Resources:**
 
@@ -504,6 +495,8 @@ applications!
 
 ### **What is an XSS Attack?**
 
+
+
 ### **Resources** :
 
 - [XSS Attack (Youtube Tutorial)](https://www.youtube.com/watch?v=oEFPFc36weY)
@@ -527,8 +520,18 @@ applications!
 
 ### **What is Webgoat?**
 
+- WebGoat is a deliberately insecure application that allows interested developers just like you to test vulnerabilities commonly found in Java-based applications that use common and popular open source components.
+
+### **Procedure:**
+
+1. Install OWASP WebGoat using *jar* file for Kali Linux
+2. 
+
 ### **Resources:**
-- [XPath injection using web goat (Youtube Tutorial)](https://www.youtube.com/watch?v=C_-ea63FUto)
+
+- [OWASP WebGoat (Official Website)](https://owasp.org/www-project-webgoat/)
+- [Introduction to WebGoat - Download and run it on Kali Linux (Youtube Tutorial)](https://youtu.be/PTPltnBCRmQ)
+- [Basic SQL injection using web goat (Youtube Tutorial)](https://www.youtube.com/watch?v=C_-ea63FUto)
 - [OWASP BWA WebGoat Challenge: Injection Flaws](https://spencerdodd.github.io/2017/01/30/webgoat_part_10_continued_continued/)
 
 ### **Result:**
@@ -552,11 +555,29 @@ applications!
 - It is a penetration testing tool that focuses on the web browser.
 - BeEF framework is used whenever any application is vulnerable to cross-site scripting (Clint-side exploit).
 
-### **Resources** :
-- [Client-Side Exploitation using BeEF (Youtube Tutorial)](https://www.youtube.com/watch?v=8GNzd7EL978)
+### **Procedure:**
+
+1. Set up *Kali Linux VM* as the attacking machine and *Metasploitable 2 VM* as the vulnerable machine.
+2. Check the IP address of *Metasploitable 2 VM* vulnerable machine using **ifconfig command**.
+3. 
+
+### **Resources:**
+
 - [BeEF official website](https://beefproject.com/)
+- [Metasploitable 2 Documentation](https://docs.rapid7.com/metasploit/metasploitable-2/)
+- [Metasploitable 2 - Rapid7 (official) Download Page](https://information.rapid7.com/download-metasploitable-2017.html)
+- [Metasploitable 2 - SourceForge Download Page](https://sourceforge.net/projects/metasploitable/files/latest/download)
+- [Installing a Metasploitable 2 VM and VirtualBox (Youtube Tutorial)](https://youtu.be/qSPT-YlIZAc)
+- [Client-Side Exploitation using BeEF (Youtube Tutorial)](https://www.youtube.com/watch?v=8GNzd7EL978)
 
 ### **Result:**
 - Advanced Client-Side Exploitation using BeEF is successfully demonstrated.
+
+---
+
+## Cyber Security Documentaries
+
+- [How Israel Rules The World Of Cyber Security | VICE on HBO](https://youtu.be/ca-C3voZwpM)
+- [WANNACRY: The World's Largest Ransomware Attack (Documentary)](https://youtu.be/PKHH_gvJ_hA)
 
 ---
