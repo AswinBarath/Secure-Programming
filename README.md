@@ -2,6 +2,8 @@
 
 - **Secure Programming** is one of the Computer Science Core Electives I had chosen from my [Software Engineering Degree](https://github.com/AswinBarath/Software-Engineering-Degree)
 
+- Total Hours Spent: [![wakatime](https://wakatime.com/badge/user/0f3d8544-3446-40bb-987d-b1a8ed7d2cff/project/69f89486-4003-4589-bd6d-2c0253262c32.svg)](https://wakatime.com/badge/user/0f3d8544-3446-40bb-987d-b1a8ed7d2cff/project/69f89486-4003-4589-bd6d-2c0253262c32)
+
 ---
 
 ## Setting up Secure Programming Lab
