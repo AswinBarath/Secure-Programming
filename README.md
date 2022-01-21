@@ -504,13 +504,68 @@ The moral of the story: Never trust user input!
 
 ---
 
-## Lab 5 - **Buffer Overflow 2**
+## ✅ Lab 5 - **Buffer Overflow 2**
 
 ### **Aim:**
+
 - Demonstrate the following
     1) Take over control of a program with a buffer overflow
     2) Perform ret2libc with a Buffer Overflow because of restricted return pointer
     3) Buffer overflow for the Stack () level
+
+### **Procedure:**
+
+- The following steps are performed to take over control of a program with a buffer overflow on the stack() level by overwriting the restricted return pointer:
+
+- The C program to exploit the buffer:
+
+<img src="./assets/Secure Programming Exp5 1 Code.png" alt="Secure Programming Exp5 1 Code" width="800px" />
+
+- GDB C compiler is used here to look into address and assembly code:
+
+<img src="./assets/Secure Programming Exp5 2 gdb cmd.png" alt="Secure Programming Exp5 2 gdb cmd" width="800px" />
+
+- “list” command is used to look the code in GDB compiler
+
+<img src="./assets/Secure Programming Exp5 3 gdb + code.png" alt="Secure Programming Exp5 3 gdb + code" width="800px" />
+
+- “list” command is used to look the code in GDB compiler
+
+<img src="./assets/Secure Programming Exp5 4  machine code.png" alt="Secure Programming Exp5 4  machine code" width="800px" />
+
+- “Hello” and “excess payload” is injected as arguments and segmentation fault is observed. 
+- It is clear that the address of the return value is partially overwritten.
+
+<img src="./assets/Secure Programming Exp5 5 args paylaod + error.png" alt="Secure Programming Exp5 5 args paylaod + error" width="800px" />
+
+- Another payload reveals that the return address is completely 
+overwritten as “0x41414141”, which can be checked with “info 
+registers” gdb command
+
+<img src="./assets/Secure Programming Exp5 6 payload + registers.png" alt="Secure Programming Exp5 6 payload + registers" width="800px" />
+
+- So, we have found a way to break the code.
+- Now, we can take over control by overwriting the buffer with address of shell code to exploit.
+
+<img src="./assets/Secure Programming Exp5 7 shell code.png" alt="Secure Programming Exp5 7 shell code" width="800px" />
+
+- After monitoring the registers, we gained access with terminal to ask for executing our shell code.
+
+<img src="./assets/Secure Programming Exp5 8 gdb run with shell code.png" alt="Secure Programming Exp5 8 gdb run with shell code" width="800px" />
+
+- Now, we can exit the gdb compiler and gain root access to successfully gain access over the system.
+- Here we execute the vulnerable code with malicious payload
+
+<img src="./assets/Secure Programming Exp5 9 code with payload.png" alt="" width="800px" />
+
+- Successfully, the access is gained through root access
+
+<img src="./assets/Secure Programming Exp5 10 exploit 1.png" alt="Secure Programming Exp5 10 exploit 1" width="800px" />
+
+- The exploit is successful where the shadow file reveals the user passwords with other private data that belongs to the user.
+
+<img src="./assets/Secure Programming Exp5 11 exploit 2.png" alt="Secure Programming Exp5 11 exploit 2" width="800px" />
+
 
 ### **Resources:**
 
