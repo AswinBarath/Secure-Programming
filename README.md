@@ -119,7 +119,7 @@ parses the input using printf function to display output.
 
 ---
 
-## Lab 2 - **DHCP attack, MAC flooding attack and CAM table overflow attack**
+## ✅ Lab 2 - **DHCP attack, MAC flooding attack and CAM table overflow attack**
 
 ### **Aim:**
 
@@ -128,21 +128,34 @@ parses the input using printf function to display output.
     2) MAC flooding attack 
     3) CAM table overflow attack
 
-<!-- ### **Notes:**
+### **Lab 2.1: DHCP attack and prevention of DHCP attack**
 
-- **MAC Flooding with MACOF & some major countermeasures**
-    - Macof is a member of the Dsniff suit toolset and mainly used to flood the switch on a local network with MAC addresses. 
-    - The reason for this is that the switch regulates the flow of data between its ports.
-    - It actively monitors (cache) the MAC address on each port, which helps it pass data only to its intended target. 
-    - This is the main difference between a switch and passive hub.
-    - A passive hub has no mapping, and thus broadcasts line data to every port on the device.
-    - The data is typically rejected by all network cards, except the one it was intended for. 
-    - However, in a hubbed network, sniffing data is very easy to accomplish by placing a network card into promiscuous mode. This allows that device to simply collect all the data passing through a hubbed network.
-    - While this is nice for a hacker, most networks use switches, which inherently restrict this activity.
-    - Macof can flood a switch with random MAC addresses. This is called MAC flooding.
-    - This fills in the switch’s CAM table, thus new MAC addresses can not be saved, and the switch starts to send all packets to all ports, so it starts to act as a hub, and thus we can monitor all traffic passing through it.
-    - Options
-    - Syntax: `macof [-i interface] [-s src] [-d dst] [-e tha] [-x sport] [-y dport] [-n times]`
+- A DHCP starvation attack is a malicious digital attack that targets DHCP servers.
+- During a DHCP attack, a hostile actor floods a DHCP server with bogus DISCOVER packets until the DHCP server exhausts its supply of IP addresses.
+- Once that happens, the attacker can deny legitimate network users service, or even supply an alternate DHCP connection that leads to a Man-in-the-Middle (MITM) attack.
+
+<img src="./assets/Secure Programming Exp2 1 DHCP 01.PNG" alt="DHCP attack" width="800px" />
+
+- **Countermeasures against DHCP attack**
+
+<img src="./assets/Secure Programming Exp2 1 DHCP 02.PNG" alt="prevention of DHCP attack" width="800px" />
+
+
+### **Lab 2.2: MAC Flooding with MACOF**
+
+- Macof is a member of the Dsniff suit toolset and mainly used to flood the switch on a local network with MAC addresses. 
+- The reason for this is that the switch regulates the flow of data between its ports.
+- It actively monitors (cache) the MAC address on each port, which helps it pass data only to its intended target. 
+- This is the main difference between a switch and passive hub.
+- A passive hub has no mapping, and thus broadcasts line data to every port on the device.
+- The data is typically rejected by all network cards, except the one it was intended for. 
+- However, in a hubbed network, sniffing data is very easy to accomplish by placing a network card into promiscuous mode. This allows that device to simply collect all the data passing through a hubbed network.
+- While this is nice for a hacker, most networks use switches, which inherently restrict this activity.
+- Macof can flood a switch with random MAC addresses. This is called MAC flooding.
+- This fills in the switch’s CAM table, thus new MAC addresses can not be saved, and the switch starts to send all packets to all ports, so it starts to act as a hub, and thus we can monitor all traffic passing through it.
+- Options
+    - Syntax: 
+        - `macof [-i interface] [-s src] [-d dst] [-e tha] [-x sport] [-y dport] [-n times]`
     ```
     -i   interface Specify the interface to send on.
     -s   src Specify source IP address.
@@ -157,11 +170,15 @@ parses the input using printf function to display output.
     - flood a switched LAN with random MAC addresses SYNOPSIS
     - `macof [-i interface] [-s src] [-d dst] [-e tha] [-x sport] [-y dport] [-n times]`
     ```
-- LAB 2.2.1: Simple Flooding
+- **LAB 2.2.1: Simple Flooding**
     - Macof can flood a switch with random MAC addresses. This is called MAC flooding.
     - This fills in the switch’s CAM table, thus new MAC addresses can not be saved, and the switch starts to send all packets to all ports, so it starts to act as a hub, and thus we can monitor all traffic passing through it.
     - command: `macof -i eth1 -n 10`
-- LAB 2.2.2: Targeted Flooding
+
+
+<img src="./assets/Secure Programming Exp2 2 1 - Simple Flooding.png" alt="LAB 2.2.1: Simple Flooding" width="800px" />
+
+- **LAB 2.2.2: Targeted Flooding**
     - Macof can flood a switch with random MAC addresses destinated to 192.168.1.1.
     - command: `macof -i eth1 -d 192.168.1.1`
     - While conducting a pentest, this tool comes in handy while sniffing.
@@ -171,11 +188,45 @@ parses the input using printf function to display output.
     - Some switches tend to crash & reboot also.
     - Such kind of layer 2 stress testing can be done with this handy tool.
 
-- **Countermeasures**
+<img src="./assets/Secure Programming Exp2 2 2 - Targeted Flooding.png" alt="LAB 2.2.2: Targeted Flooding" width="800px" />
+
+
+- **Countermeasures against MAC Flooding**
 - Some of the major countermeasures against MAC Flooding are:
     1) Port Security : Limits the no of MAC addresses connecting to a single port on the Switch.
     2) Implementation of 802.1X : Allows packet filtering rules issued by a centralised AAA server based on dynamic learning of clients.
     3) MAC Filtering  : Limits the no of MAC addresses to a certain extent.
+
+### **Lab 2.3: CAM table overflow attack**
+
+- CAM table stands for Content Addressable Memory
+- The CAM table stores information such as MAC 
+addresses available on physical ports with their 
+associated VLAN parameters
+- CAM tables have a fixed size
+
+<img src="./assets/Secure Programming Exp2 3 CAM 01.PNG" alt="Lab 2.3: CAM table overflow attack" width="800px" />
+
+- **CAM Table Full**
+
+- Once the CAM table is full, traffic without a CAM entry 
+is flooded out every port on that VLAN
+but NOT traffic with an existing CAM entry
+- This will turn a VLAN on a switch basically
+into a hub
+- This attack will also fill the CAM tables of adjacent 
+switches
+- BTW Cisco switches never overwrites an existing entry
+Idle entries are removed
+10.1.1.22 -> (broadcast) ARP C Who is 10.1.1.1, 10.1.1.1 ?
+10.1.1.22 -> (broadcast) ARP C Who is 10.1.1.19, 10.1.1.19 ?
+10.1.1.26 -> 10.1.1.25 ICMP Echo request (ID: 256 Sequence number: 7424) <- OOPS
+10.1.1.25 -> 10.1.1.26 ICMP Echo reply (ID: 256 Sequence number: 7424) <- OOPS
+
+- **Countermeasures for MAC Attacks**
+
+<img src="./assets/Secure Programming Exp2 3 CAM 02.PNG" alt="CAM Table Full" width="800px" />
+
 
 ### **Resources:**
 
@@ -201,9 +252,7 @@ parses the input using printf function to display output.
 - MAC flooding 
     - [Kali Linux CAM Table Overflow Demo - Article](https://networkwizkid.com/2017/02/01/kali-linux-cam-table-overflow-attack-demonstration/)
     - [MAC flooding lab - Article](https://yaser-rahmati.gitbook.io/cisco-ccnp-r-s-300-115-switch/lab-mac-address-flooding#3-3-how-to-do)
-- [CAM Table Overflow Attack Explained - Article](https://www.cbtnuggets.com/blog/technology/networking/cam-table-overflow-attack-explained) -->
-
-### **Resources:**
+- [CAM Table Overflow Attack Explained - Article](https://www.cbtnuggets.com/blog/technology/networking/cam-table-overflow-attack-explained)
 
 ### **Result:**
 
